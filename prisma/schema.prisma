@@ -1,0 +1,85 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // Only needed when using a cloud provider that doesn't support the creation of new databases, like Heroku. Learn more: https://pris.ly/d/migrate-shadow
+}
+
+generator client {
+  provider        = "prisma-client-js"
+
+}
+
+model Account {
+ id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId             String  @db.ObjectId
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  
+  access_token       String?  
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String  @db.ObjectId
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+ id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  marks Marks[]
+}
+model Marks {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  UserId String @db.ObjectId
+  paperId String @db.ObjectId
+  paper         Paper     @relation(fields: [paperId], references: [id], onDelete: Cascade)
+  title String? 
+  marks String?
+  user         User     @relation(fields: [UserId], references: [id], onDelete: Cascade)
+
+ 
+}
+model VerificationToken {
+  identifier String @id @map("_id")
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Paper {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  createAt DateTime? @default(now())
+  techer      String  
+  title       String?
+  desc  String?  
+  img String
+  questions   String[]
+  Pepar Marks[]
+}
+model Question {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  quiz String 
+  answers String[]
+  correctAnswer String   
+  PeparId String?   
+ }
+
