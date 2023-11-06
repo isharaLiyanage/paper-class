@@ -9,7 +9,7 @@ import PostTag from "./RecentPostTag";
 
 type Posts = {
   id: string;
-  crateAt: string;
+  createAt: string;
   desc: string;
   cat: string;
   catSlug: string;
@@ -69,7 +69,7 @@ async function RecentPost({ page, cat }: any) {
               </div>
               <div className=" w-4/12">
                 <div className="flex">
-                  <p> {setDate(item.crateAt)}</p>
+                  <p> {setDate(item.createAt)}</p>
                   <a href="#" className=" ml-2 text-red-300">
                     {item.catSlug}
                   </a>

@@ -24,6 +24,9 @@ body {
   transition-duration: 150ms;
   transition-delay: 1s;
 }
+.scroll-bar {
+  scrollbar-width: auto;
+}
 .sidebar {
   animation: side 1s alternate ease-in;
 }

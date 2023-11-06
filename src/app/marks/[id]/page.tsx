@@ -29,14 +29,16 @@ async function page({ params }: any) {
               {user.marks.map((paper: any, key: number) => (
                 <div
                   key={key}
-                  className="bg-white mx-52 shadow-lg p-4 rounded-lg"
+                  className="bg-white md:mx-52 shadow-lg p-4 rounded-lg"
                 >
                   <div className="mb-4">
                     <h1 className="text-2xl font-bold overflow-x-auto">
                       {" "}
                       Paper Name: {paper.title}
                     </h1>
-                    <p className="text-gray-500">Paper ID: {paper.paperId}</p>
+                    <p className="text-gray-500 overflow-x-auto scroll-bar">
+                      Paper ID: {paper.paperId}
+                    </p>
                   </div>
                   <div className="flex items-center">
                     <span className="mr-2 text-gray-600">Marks:</span>
