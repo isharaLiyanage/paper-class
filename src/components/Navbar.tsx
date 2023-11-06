@@ -15,35 +15,15 @@ const Navbar = () => {
   const [profileOpen, setProfileOpen] = useState(false);
   console.log(data?.user?.email);
   return (
-    <header className="  ">
-      <div className="flex relative flex-wrap justify-between w-full ">
-        <div className="flex relative w-3/12 gap-1 mt-2">
-          <Link href="#">
-            <Image src={facebook} width={24} height={24} alt="facebook icon" />
-          </Link>
-          <Link href="#">
-            <Image src={tiktok} width={24} height={24} alt="tiktok icon" />
-          </Link>
-          <Link href="#">
-            <Image
-              src={instagram}
-              width={24}
-              height={24}
-              alt="instagram icon"
-            />
-          </Link>
-        </div>
-        <div className="w-5/12 flex justify-center">
-          {" "}
-          {/* Center the Blog Site */}
-          <h1 className="dark:text-gray-200 text-gray-800 text-2xl">
-            <Link href="/">Blog Site</Link>
+    <header className="  m-auto bg-gradient-to-r  from-white to-[#21c8f64f] bg-inherit ">
+      <div className="flex max-w-[1200px]  m-auto relative flex-wrap sm:flex-row flex-col self-center justify-between  ">
+        <div className=" text-center">
+          <h1 className="dark:text-gray-200 font-bold text-gray-800 text-2xl">
+            <Link href="/">MCQMasterclass.com</Link>
           </h1>
         </div>
-        <div className="flex  m-auto self-center w-4/12 dark:text-gray-100">
-          <div className="mx-1 cursor-pointer">
-            <DarkModeToggle />
-          </div>
+        <div className="flex justify-end self-center w-4/12 dark:text-gray-100">
+          <div className="mx-1 cursor-pointer"></div>
           <div className="lg:flex text-[14px] hidden self-center  gap-2">
             <div className="ml-1">
               <Link href="/" className="">
@@ -69,7 +49,7 @@ const Navbar = () => {
               setOpen(!open);
             }}
           >
-            side
+            Navbar
           </div>
           <div className="md:mx-2  text-[14px]">
             {status ? (
@@ -88,8 +68,10 @@ const Navbar = () => {
                   </p>
                   <div
                     className={`${
-                      profileOpen ? "absolute" : "hidden"
-                    } px-3 py-2 right-0 sm:left-0 w-20 bg-slate-100 rounded-sm border border-cyan-200`}
+                      profileOpen
+                        ? "absolute translate-y-0 "
+                        : "hidden  translate-y-8"
+                    } px-3 py-2 md:-left-4 sm:left-0 w-20  transform  duration-1000 ease-in bg-slate-100  rounded shadow border border-cyan-200`}
                   >
                     <div className="">
                       <p>
@@ -110,7 +92,10 @@ const Navbar = () => {
                   </div>
                 </div>
               ) : (
-                <Link href="/login" className=" ">
+                <Link
+                  href="/login"
+                  className=" px-5 border bg-white hover:bg-blue-100 transition duration-500 ease-in border-blue-50  rounded-2xl my-1 py-1 "
+                >
                   Login
                 </Link>
               )

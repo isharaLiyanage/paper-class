@@ -1,21 +1,20 @@
-import Categories from "@/components/home/Categories";
 import Featured from "@/components/home/Featured";
 import MostPopular from "@/components/home/MostPopular";
-import PopularCategory from "@/components/home/PopularCategory";
 import RecentPost from "@/components/home/RecentPost";
-import { useSearchParams } from "next/navigation";
+import Widget from "@/components/home/Widget";
 
 export default function Home({ searchParams }: any) {
   const pageNumber = searchParams.page || 1;
 
   return (
-    <div className="mx-1 md:mx-auto max-w-[900px] m-auto dark:text-white text-gray-900">
-      <h2 className=" my-3 text-4xl text-center ">
-        <b>Hey, here! </b> Discover my stories and creative ideas.
-      </h2>
-      <Featured />
-
-      <div className="flex flex-wrap">
+    <div className="">
+      <div className=" bg-gradient-to-r  from-white to-[#21c8f64f]  m-auto dark:text-white text-gray-900">
+        <Featured />
+      </div>
+      <div className="">
+        <Widget />
+      </div>
+      <div className=" md:mx-auto max-w-[1200px] flex flex-wrap">
         <div className="w-full md:w-9/12">
           <div className="my-4">
             <b>Recent Posts</b>

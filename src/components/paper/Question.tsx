@@ -34,8 +34,10 @@ function Question({ Question, params }: any) {
 
   return (
     <div>
+      <div className="flex justify-around">
+        {marks ? <p>Marks:{marks}</p> : <Timer />}
+      </div>
       <form action="" onSubmit={handleSubmit}>
-        <Timer />
         {Question.paper.map((item: Question, key: number) => (
           <div className=" ml-4" key={item.id}>
             <strong>
@@ -62,12 +64,12 @@ function Question({ Question, params }: any) {
           </div>
         ))}
         <button
-          className=" px-5 py-3  rounded bg-blue-500 shadow  shadow-transparent"
+          className=" px-5 py-3 disabled:bg-blue-100  disabled:text-blue-200  rounded bg-blue-500 shadow  shadow-transparent"
           type="submit"
+          disabled={marks ? true : false}
         >
           Submit
         </button>
-        {marks ? <p>{marks}</p> : ""}
       </form>
     </div>
   );

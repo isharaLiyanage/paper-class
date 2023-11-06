@@ -1,5 +1,8 @@
 import { WebUrl } from "@/components/WebUrl";
+import Auth from "@/components/paper/Auth";
 import Question from "@/components/paper/Question";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 const getData = async ({ id }: any) => {
   const res = await fetch(WebUrl + `/api/paper/${String(id)}`, {
@@ -10,15 +13,17 @@ const getData = async ({ id }: any) => {
   }
   return res.json();
 };
-async function page({ params }: any) {
+async function Page({ params }: any) {
   const questionArray = await getData(params);
 
   return (
-    <section className="m-auto w-10/12 h-screen">
-      <strong>Paper</strong>
-      <Question Question={questionArray} params={params.id} />
-    </section>
+    <Auth>
+      <section className="m-auto w-10/12 h-screen">
+        <strong>Paper</strong>
+        <Question Question={questionArray} params={params.id} />
+      </section>
+    </Auth>
   );
 }
 
-export default page;
+export default Page;

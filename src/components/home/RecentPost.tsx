@@ -57,35 +57,40 @@ async function RecentPost({ page, cat }: any) {
   };
 
   return (
-    <div>
-      <div className=" my-2">
-        {posts?.map((item: Posts) => (
-          <div key={item.id} className="my-2 flex justify-between m-auto">
-            <div className="relative w-5/12 ">
-              <Link href={`/paper/${item.id}`}>
-                <Image alt="" src={item.img} fill objectFit="cover" />
-              </Link>
-            </div>
-            <div className=" w-6/12">
-              <div className="flex">
-                <p> {setDate(item.crateAt)}</p>
-                <a href="#" className=" ml-2 text-red-300">
-                  {item.catSlug}
-                </a>
+    <div className="">
+      <div className=" border border-blue-100 px-2 md:mr-4 rounded-md shadow-2xl">
+        <div className=" my-2">
+          {posts?.map((item: Posts) => (
+            <div key={item.id} className="my-2 flex items-center gap-2 m-auto">
+              <div className="relative w-6/12 h-32 ">
+                <Link href={`/paper/${item.id}`}>
+                  <Image alt="" src={item.img} fill objectFit="cover" />
+                </Link>
               </div>
-              <Link href={`/paper/${item.id}`}>
-                <PostTag
-                  title={item.title}
-                  desc={item.desc}
-                  suppressHydrationWarning
-                />
-              </Link>
-              <button className=" mt-2 bg-slate-500 rounded-md px-1">
-                Read more
-              </button>
+              <div className=" w-4/12">
+                <div className="flex">
+                  <p> {setDate(item.crateAt)}</p>
+                  <a href="#" className=" ml-2 text-red-300">
+                    {item.catSlug}
+                  </a>
+                </div>
+                <Link href={`/paper/${item.id}`}>
+                  <PostTag
+                    title={item.title}
+                    desc={item.desc}
+                    suppressHydrationWarning
+                  />
+                </Link>
+                <Link
+                  href={`/paper/${item.id}`}
+                  className=" mt-2 px-3 py-2 bg-slate-500 rounded-md "
+                >
+                  Read more
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       <PageBtn Prev={Prev} Next={Next} page={page} />
     </div>
