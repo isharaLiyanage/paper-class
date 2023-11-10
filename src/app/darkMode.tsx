@@ -16,7 +16,7 @@ const DarkModeToggle = () => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
     }
-  }, []);
+  }, [darkMode]);
 
   const toggleDarkMode = () => {
     const updatedDarkMode = !darkMode;
