@@ -22,7 +22,7 @@ export default function Home({ searchParams }: any) {
           <RecentPost page={pageNumber} />
         </div>
         <div className="flex flex-col sm:flex-row md:flex-col w-11/12 md:w-3/12">
-          <div className="">
+          <div className=" border border-blue-100 px-1 rounded">
             <div className="my-4">
               <b>Most Popular</b>
             </div>
