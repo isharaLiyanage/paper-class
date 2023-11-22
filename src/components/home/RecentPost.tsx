@@ -27,7 +27,7 @@ const getData = async ({ page, cat }: any) => {
     }
   );
   if (!res.ok) {
-    throw error("backend not working");
+    throw error(res + "backend not working");
   }
   return res.json();
 };
