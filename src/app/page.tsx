@@ -31,12 +31,7 @@ export default function Home({ searchParams }: any) {
             <MostPopular />
             <MostPopular />
           </div>
-          <div className="">
-            <div className="my-4">
-              <b>Categories</b>
-            </div>
-            {/* <Categories /> */}
-          </div>
+          <div className=""></div>
         </div>
       </div>
     </div>

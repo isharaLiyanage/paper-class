@@ -70,9 +70,9 @@ async function RecentPost({ page, cat }: any) {
               <div className=" w-4/12">
                 <div className="flex">
                   <p> {setDate(item.createAt)}</p>
-                  <a href="#" className=" ml-2 text-red-300">
+                  {/* <a href="#" className=" ml-2 text-red-300">
                     {item.catSlug}
-                  </a>
+                  </a> */}
                 </div>
                 <Link href={`/paper/${item.id}`}>
                   <PostTag
@@ -83,7 +83,7 @@ async function RecentPost({ page, cat }: any) {
                 </Link>
                 <Link
                   href={`/paper/${item.id}`}
-                  className=" mt-2 px-3 py-2 bg-slate-500 rounded-md "
+                  className=" mt-2 px-3 text-white py-2 bg-slate-500 rounded-md "
                 >
                   Read more
                 </Link>

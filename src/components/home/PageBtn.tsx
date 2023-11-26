@@ -20,14 +20,14 @@ function PageBtn({ Prev, Next, page }: any) {
     <div className="flex w-full justify-around mt-3">
       <button
         onClick={handlePrev}
-        className="disabled:bg-red-500 px-3 bg-red-800 rounded-md cursor-pointer"
+        className="disabled:bg-red-500 text-white px-3 bg-red-800 rounded-md cursor-pointer"
       >
         Prev
         {Prev ? "" : ""}
       </button>
       <button
         onClick={handleNext}
-        className=" px-3 bg-red-800 rounded-md cursor-pointer"
+        className=" px-3 bg-red-800 text-white rounded-md cursor-pointer"
       >
         Next
       </button>

@@ -7,7 +7,7 @@ function MostPopular() {
         {" "}
         <button className="bg-orange-500 px-2 rounded-md ">category</button>
       </div>
-      <h5>Lorem ipsum dolor psit amet consectetur.</h5>
+      <p>Lorem ipsum dolor psit amet consectetur.</p>
       21.12.2023
     </div>
   );

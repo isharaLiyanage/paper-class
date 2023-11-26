@@ -36,7 +36,7 @@ function Featured() {
           </div>
           <div className=" ">
             <Image
-              alt=""
+              alt="hero section image"
               className=" z-0"
               src={img}
               fill
