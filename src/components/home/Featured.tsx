@@ -1,5 +1,5 @@
 import Image from "next/image";
-import img from "../../../public/hero.png";
+import img from "../../../public/hero.webp";
 function Featured() {
   return (
     <div className=" overflow-x-hidden ">
