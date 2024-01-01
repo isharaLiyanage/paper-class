@@ -3,7 +3,11 @@ import MostPopular from "@/components/home/MostPopular";
 import RecentPost from "@/components/home/RecentPost";
 import Widget from "@/components/home/Widget";
 
-export default function Home({ searchParams }: any) {
+export default function Home({
+  searchParams,
+}: {
+  searchParams: { page?: number };
+}) {
   const pageNumber = searchParams.page || 1;
 
   return (

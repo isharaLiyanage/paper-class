@@ -71,17 +71,17 @@ const Navbar = () => {
                       profileOpen
                         ? "absolute translate-y-0 "
                         : "hidden  translate-y-8"
-                    } px-3 py-2 md:-left-4 sm:left-0 w-20  transform  duration-1000 ease-in bg-slate-100  rounded shadow border border-cyan-200`}
+                    } py-2 md:-left-4 sm:left-0 w-20  transform  duration-1000 ease-in bg-slate-100  rounded shadow border border-cyan-200`}
                   >
                     <div className="">
-                      <p>
+                      <p className=" px-3 hover:bg-slate-200 ">
                         <Link href={`/user/${data?.user?.email}`}>Profile</Link>
                       </p>
-                      <p>
+                      <p className=" px-3 hover:bg-slate-200 ">
                         <Link href={`/marks/${data?.user?.email}`}>Marks</Link>
                       </p>
                       <p
-                        className=" cursor-pointer "
+                        className=" px-3 hover:bg-slate-200 cursor-pointer "
                         onClick={() => {
                           signOut();
                         }}
