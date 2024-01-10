@@ -6,6 +6,7 @@ import { NextAuthOptions } from "next-auth";
 import { Prisma, PrismaClient } from "@prisma/client";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextResponse } from "next/server";
+
 const prisma = new PrismaClient();
 
 const AuthOption: NextAuthOptions = {
@@ -18,13 +19,17 @@ const AuthOption: NextAuthOptions = {
     }),
     CredentialsProvider({
       name: "Credentials",
-
-      async authorize(credentials, req) {
-        console.log(req);
+      credentials: {
+        // Define your credential fields here
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
         try {
           const user = await prisma.user.findFirst({
             where: { ...(credentials && { email: credentials.email }) },
           });
+
           if (user) {
             console.log(user);
             if (user.password !== null && credentials) {
@@ -35,24 +40,17 @@ const AuthOption: NextAuthOptions = {
               if (isPassword) {
                 return user;
               } else {
-                return new NextResponse(
-                  JSON.stringify({ status: 400, massage: "Wrong password" })
-                );
+                throw new Error("Wrong password");
               }
             } else {
-              return new NextResponse(
-                JSON.stringify({ status: 400, massage: "Wrong password" })
-              );
+              throw new Error("Missing credentials");
             }
           } else {
-            return new NextResponse(
-              JSON.stringify({ status: 400, massage: "User Not Found" })
-            );
+            throw new Error("User Not Found");
           }
         } catch (error) {
-          return new NextResponse(
-            JSON.stringify({ status: 400, massage: error })
-          );
+          console.error(error);
+          throw new Error("Authentication failed");
         }
       },
     }),

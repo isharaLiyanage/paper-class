@@ -8,7 +8,6 @@ export const POST = async (req: NextRequest) => {
   const { name, email, password } = await req.json();
 
   const hashPassword = await bcrypt.hash(password, 6);
-
   try {
     const isUser = await prisma.user.findFirst({ where: { email: email } });
     if (isUser) {
