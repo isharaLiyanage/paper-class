@@ -30,8 +30,7 @@ const Page = () => {
     console.log(quiz);
     setQuestions([...questions, quiz]);
   };
-  console.log(questions);
-  console.log(numQuestion);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const data = new FormData();
@@ -128,7 +127,7 @@ const Page = () => {
           <QuizForm addQuiz={addQuiz} />
         </div>
         <button
-          className="bg-blue-500 fixed right-6 top-6 text-white py-2 px-4 rounded"
+          className="bg-blue-500 fixed right-6 top-8 text-white py-2 px-4 rounded"
           type="submit"
           onClick={handleSubmit}
         >
