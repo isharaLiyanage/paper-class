@@ -1,17 +1,33 @@
 import { signIn } from "next-auth/react";
-import React from "react";
+import { useSearchParams } from "next/navigation";
+
+import React, { useEffect, useState } from "react";
 
 function Log({ display }: any) {
-  console.log(display);
+  const [err, setErr] = useState<string | string[]>();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const error = searchParams.get("error");
+    if (error) {
+      setErr(error);
+    }
+  }, []);
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
+    try {
+      signIn(
+        "credentials",
 
-    signIn("credentials", {
-      email,
-      password,
-    });
+        {
+          email,
+          password,
+        }
+      );
+    } catch (error: any) {}
   };
   return (
     <div
@@ -50,6 +66,7 @@ function Log({ display }: any) {
         >
           Sign Up
         </button>
+        {err && <p className=" text-red-500">{err}</p>}
       </form>
     </div>
   );

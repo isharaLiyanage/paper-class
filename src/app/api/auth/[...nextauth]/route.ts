@@ -31,7 +31,6 @@ const AuthOption: NextAuthOptions = {
           });
 
           if (user) {
-            console.log(user);
             if (user.password !== null && credentials) {
               const isPassword = await bcrypt.compare(
                 credentials.password,
@@ -48,9 +47,10 @@ const AuthOption: NextAuthOptions = {
           } else {
             throw new Error("User Not Found");
           }
-        } catch (error) {
-          console.error(error);
-          throw new Error("Authentication failed");
+        } catch (error: any) {
+          const { statusCode, message } = error;
+          console.error(message + "sds");
+          throw new Error(message);
         }
       },
     }),
@@ -73,7 +73,8 @@ const AuthOption: NextAuthOptions = {
     strategy: "jwt",
   },
   pages: {
-    signIn: "/log",
+    signIn: "/login",
+    error: "/login",
   },
 };
 
